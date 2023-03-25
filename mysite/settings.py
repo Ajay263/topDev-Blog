@@ -29,16 +29,13 @@ from django.core.management.utils import get_random_secret_key
 # Set the SECRET_KEY using the get_random_secret_key function
 SECRET_KEY = get_random_secret_key()
 
-CSRF_COOKIE_SECURE = True
-
-SESSION_COOKIE_SECURE  = True
 
 
 
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
