@@ -1,0 +1,43 @@
+{% extends "blog/base/base.html" %}
+
+
+
+{% block title %}Share a post{% endblock %}
+
+
+
+
+{% block content %}
+
+<main id="main">
+ {% if sent %}
+ <h1>E-mail successfully sent</h1>
+ <p>
+ "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
+ </p>
+ {% else %}
+ <h1>Share "{{ post.title }}" by e-mail</h1>
+
+ <!-- ======= Comments Form ======= -->
+ <div class="row justify-content-center mt-5">
+<form     method="POST">
+  <div class="col-lg-12">
+    <h5 class="comment-title">Share with a friend</h5>
+    <div class="row">
+      <div class="col-lg-6 mb-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+       
+        <div class="col-12">
+          <input type="submit" class="btn btn-primary" value="Post comment">
+        </div>
+      </div>
+    </div>
+ 
+</form>
+{% endif %}
+</div><!-- End Comments Form -->
+
+</main><!-- End #main -->
+
+{% endblock %}

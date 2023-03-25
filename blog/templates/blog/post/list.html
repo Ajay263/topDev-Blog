@@ -1,0 +1,141 @@
+{% extends "blog/base/base.html" %}
+{% load blog_tags %}
+
+
+
+
+
+{% block title %}topDev Blog{% endblock %}
+
+
+
+
+{% block content %}
+ 
+
+
+<body>
+    <main id="main">
+  
+      <!-- ======= Hero Slider Section ======= -->
+      <section id="hero-slider" class="hero-slider">
+        <div class="container-md" data-aos="fade-in">
+          <div class="row">
+            <div class="col-12">
+              <div class="swiper sliderFeaturedPosts">
+                <div class="swiper-wrapper">
+                  {% for post in posts %}
+                  <div class="swiper-slide">
+                    <a href="{{ post.get_absolute_url }}" class="img-bg d-flex align-items-end" style="background-image: url({{ post.image.url }});">
+                      <div class="img-bg-inner">
+                        <h2>{{post.title}}</h2>
+                        <p>{{ post.body|markdown|truncatewords_html:30  }}</p>
+                      </div>
+                    </a>
+                  </div>
+
+                  {% endfor %}
+
+                </div>
+                <div class="custom-swiper-button-next">
+                  <span class="bi-chevron-right"></span>
+                </div>
+                <div class="custom-swiper-button-prev">
+                  <span class="bi-chevron-left"></span>
+                </div>
+  
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- End Hero Slider Section -->
+  
+    
+  
+      <!-- ======= Culture Category Section ======= -->
+      <section class="category-section">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header d-flex justify-content-between align-items-center mb-5">
+            <h2>Blogs</h2>
+            <div><a href="{% url "blog:post_feed" %}" class="more">Subscribe To our Feeds</a></div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-9">
+
+
+              {% for post in posts %}
+  
+              <div class="d-lg-flex post-entry-2">
+                <a href="{{ post.get_absolute_url }}" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                  <img src="{{post.image.url}}" alt="IMG....." class="img-fluid">
+                </a>
+                <div>
+                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>{{ post.publish }}</span></div>
+                  <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>  
+                  <p>{{ post.body|safe|truncatewords_html:30  }}</p>
+                  <div class="d-flex align-items-center author">
+                    <div class="photo"><img src="{{post.image.url}}" alt="IMG....." class="img-fluid"></div>
+                    <div class="name">
+                      <h3 class="m-0 p-0">{{ post.author }}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              {% endfor %}
+
+            </div>
+          </div>
+  
+              <!-- Trending Section -->
+              <div class="col-lg-4">
+  
+                <div class="trending">
+                  <h3 id="heading">Most Trending</h3>
+                  <ul class="trending-post">
+
+                    {% get_most_commented_posts as most_commented_posts %}
+                    {% for post in most_commented_posts %}
+                    <li>
+                      <a href="{{ post.get_absolute_url }}">
+                        <span class="number"></span>
+                        
+                        <h3>{{ post.title }}</h3>
+                        <span class="author">{{ post.author}}</span>
+                      </a>
+                    </li>
+                    {% endfor %}
+
+                  </ul>
+                </div>
+
+              </div> <!-- End Trending Section -->
+
+
+
+
+           
+
+
+
+
+
+      </section><!-- End Culture Category Section -->
+  
+     
+  {% include "blog/post/pagination.html" with page=posts %}
+
+  
+    </main><!-- End #main -->
+  
+  
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  
+  
+  </body>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% extends "blog/base/base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+
+{% block content %}
+
+
+
+<main id="main">
+  <section>
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+          <h1 class="page-title">About us</h1>
+        </div>
+      </div>
+      {% for post in about %}
+      <div class="row mb-5">
+
+       
+
+        <div class="d-md-flex post-entry-2 half">
+          <a href="#" class="me-4 thumbnail">
+            <img src="{{post.aboutme_pic.url}}" alt="" class="img-fluid">
+          </a>
+          <div class="ps-md-5 mt-4 mt-md-0">
+            <div class="post-meta mt-4">About us</div>
+            <h2 class="mb-4 display-4">About Me</h2>
+
+            <p> {{post.aboutme}}  </p>
+          </div>
+        </div>
+
+
+  
+        <div class="d-md-flex post-entry-2 half mt-5">
+          <a href="#" class="me-4 thumbnail order-2">
+            <img src="{{post.mission_pic.url}}" alt="" class="img-fluid">
+          </a>
+          <div class="pe-md-5 mt-4 mt-md-0">
+            <div class="post-meta mt-4">Mission &amp; Vision</div>
+            <h2 class="mb-4 display-4">Mission &amp; Vision</h2>
+
+            <p>{{post.mission}}</p>
+            
+          </div>
+        </div>
+
+
+        {% endfor %}
+
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+</main><!-- End #main -->
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+{% endblock %}

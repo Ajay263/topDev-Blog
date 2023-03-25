@@ -1,0 +1,21 @@
+ <!-- ======= Comments Form ======= -->
+ <div class="row justify-content-center mt-5">
+    <form     method="POST"   action = "{% url "blog:post_comment" post.id %}" >
+      <div class="col-lg-12">
+        <h5 class="comment-title">Leave a Comment</h5>
+        <div class="row">
+          <div class="col-lg-6 mb-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+           
+            <div class="col-12">
+              <input type="submit" class="btn btn-primary" value="Post comment">
+            </div>
+          </div>
+        </div>
+     
+    </form>
+    </div><!-- End Comments Form -->
+    
+    </main><!-- End #main -->
+    

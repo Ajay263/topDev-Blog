@@ -1,0 +1,153 @@
+{% extends "blog/base/base.html" %}
+{% load blog_tags %}
+
+
+{% block title %} {{ post.title }} {% endblock %}
+
+
+
+{% block content %}
+
+
+<main id="main">
+
+  <section class="single-post-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 post-content" data-aos="fade-up">
+
+          <!-- ======= Single Post Content ======= -->
+          <div class="single-post">
+            <div class="post-meta"><span class="date"></span> <span class="mx-1">&bullet;</span> <span>{{ post.publish }}</span></div>
+            <h1 class="mb-5">{{ post.title }}</h1>
+
+            <p>{{ post.body|safe }}</p>
+            <p>
+              <a href="{% url "blog:post_share" post.id %}" class="btn btn-primary" role="button" >Share this post</a>
+            </p>
+          </div><!-- End Single Post Content -->
+
+        </div>
+        <div class="col-md-3">
+          <!-- ======= Sidebar ======= -->
+          <div class="aside-block">
+
+            <ul class="nav nav-pills custom-tab-nav mb-4" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-popular-tab" data-bs-toggle="pill" data-bs-target="#pills-popular" type="button" role="tab" aria-controls="pills-popular" aria-selected="true">similar Posts</button>
+              </li>
+
+              </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+              {% for post in similar_posts %}
+              <!-- Popular -->
+              <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">Sport</span> <span class="mx-1">&bullet;</span> <span>{{ post.created }}</span></div>
+                  <h2 class="mb-2"><a href="{{ post.get_absolute_url }}">{{ post.title }}</h2>
+                  <span class="author mb-3 d-block">{{ post.author }}</span>
+                </div>
+                {% empty %}
+                There are no similar posts yet.
+            {% endfor %}
+              </div> <!-- End Popular -->
+
+           
+
+       
+            </div>
+          </div>
+
+
+          <div class="aside-block">
+            <h3 class="aside-title">Tags</h3>
+            <ul class="aside-tags list-unstyled">
+              <li><a href="#">{{ post.tags.all|join:", " }}</a></li>
+            </ul>
+          </div><!-- End Tags -->
+        </div>
+      </div>
+
+      
+    </div>
+
+    
+  </section>
+
+
+  
+  
+  {% for comment in comments %}
+  <!-- ======= Comments ======= -->
+
+  <div class="comments">
+
+    <h5 class="comment-title py-4">Comment {{ forloop.counter }} </h5>
+ 
+
+    <div class="comment d-flex">
+      <div class="flex-shrink-0">
+        <div class="avatar avatar-sm rounded-circle">
+          <img class="avatar-img" src="assets/img/person-2.jpg" alt="" class="img-fluid">
+        </div>
+      </div>
+      <div class="flex-shrink-1 ms-2 ms-sm-3">
+        <div class="comment-meta d-flex">
+          <h6 class="me-2">{{ comment.name }}</h6>
+          <span class="text-muted">{{ comment.created }}</span>
+        </div>
+        <div class="comment-body">
+          {{ comment.body|linebreaks }}
+        </div>
+      </div>
+    </div>
+  </div><!-- End Comments -->
+  {% empty %}
+            <p>There are no comments.</p>
+          </div>
+  {% endfor %}
+  
+  {% include "blog/post/includes/comment_form.html" %}
+  
+</main><!-- End #main -->
+
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
