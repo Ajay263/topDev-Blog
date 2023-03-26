@@ -33,12 +33,13 @@ SECRET_KEY = get_random_secret_key()
 
 
 
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+
+
 
 
 
@@ -178,6 +179,19 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 #  }
 # }
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ["PGDATABASE"],
+#         'USER': os.environ["PGUSER"],
+#         'PASSWORD': os.environ["PGPASSWORD"],
+#         'HOST': os.environ["PGHOST"],
+#         'PORT': os.environ["PGPORT"],
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -188,19 +202,6 @@ DATABASES = {
         'PORT': '6556',
     }
 }
-
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': '0spQlvlS2SLdnHPFH9OH',
-#         'HOST': 'containers-us-west-193.railway.app',
-#         'PORT': '7988',
-#     }
-# }
 
 
 
@@ -262,6 +263,7 @@ EMAIL_HOST_PASSWORD = 'lfgrfajvvmxuuigb'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+
 # Update database configuration from $DATABASE_URL.
 
 import dj_database_url
@@ -274,7 +276,10 @@ DATABASES = {
 
 
 
+
 # Simplified static file serving.
 # https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
