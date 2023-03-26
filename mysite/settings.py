@@ -33,8 +33,6 @@ SECRET_KEY = get_random_secret_key()
 
 
 
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -179,28 +177,28 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ["PGDATABASE"],
-        'USER': os.environ["PGUSER"],
-        'PASSWORD': os.environ["PGPASSWORD"],
-        'HOST': os.environ["PGHOST"],
-        'PORT': os.environ["PGPORT"],
-    }
-}
-
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'railway',
-#         'USER': 'postgres',
-#         'PASSWORD': '0spQlvlS2SLdnHPFH9OH',
-#         'HOST': 'containers-us-west-193.railway.app',
-#         'PORT': '7988',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ["PGDATABASE"],
+#         'USER': os.environ["PGUSER"],
+#         'PASSWORD': os.environ["PGPASSWORD"],
+#         'HOST': os.environ["PGHOST"],
+#         'PORT': os.environ["PGPORT"],
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '91CHRoWmyxTeQgoJ0cPV',
+        'HOST': 'containers-us-west-170.railway.app',
+        'PORT': '6556',
+    }
+}
 
 
 
@@ -264,7 +262,14 @@ EMAIL_USE_TLS = True
 
 
 # Update database configuration from $DATABASE_URL.
+
 import dj_database_url
+
+DATABASE_URL = 'postgresql://postgres:91CHRoWmyxTeQgoJ0cPV@containers-us-west-170.railway.app:6556/railway'
+
+DATABASES = {
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+}
 
 
 
