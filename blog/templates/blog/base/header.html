@@ -1,8 +1,3 @@
-<a href="{% url "blog:post_feed" %}">
-  Subscribe to my RSS feed
-
-
-
 
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center fixed-top">
@@ -13,17 +8,13 @@
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>topDev</h1>
       </a>
-
       <nav id="navbar" class="navbar">
-     
+        <ul>
           <li><a href="{% url "blog:post_list" %}">Home</a></li>
           <li><a href="{% url "blog:about_us" %}">About</a></li>
+          <li><a href="{% url "blog:post_feed" %}">Subscribe</a></li>
           <li><a href="{% url "blog:contact_us" %}">Contact</a></li>
-            <ul>
-
-          
-          
-      
+        </ul>
       </nav><!-- .navbar -->
 
       <div class="position-relative">
@@ -48,3 +39,15 @@
     </div>
 
   </header><!-- End Header -->
+
+
+
+
+
+
+
+
+
+
+
+
