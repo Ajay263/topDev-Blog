@@ -38,7 +38,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-5fa8.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://topdev.up.railway.app']
 
 
 
@@ -169,29 +169,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "mysite.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#  'default': {
-#  'ENGINE': 'django.db.backends.postgresql',
-#  'NAME': 'TopDevBlog',
-#  'USER': 'postgres',
-#  'PASSWORD': '1234',
-#  }
-# }
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ["PGDATABASE"],
-#         'USER': os.environ["PGUSER"],
-#         'PASSWORD': os.environ["PGPASSWORD"],
-#         'HOST': os.environ["PGHOST"],
-#         'PORT': os.environ["PGPORT"],
-#     }
-# }
 
 
 DATABASES = {
