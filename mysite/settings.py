@@ -178,17 +178,17 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 #  }
 # }
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ["PGDATABASE"],
-        'USER': os.environ["PGUSER"],
-        'PASSWORD': os.environ["PGPASSWORD"],
-        'HOST': os.environ["PGHOST"],
-        'PORT': os.environ["PGPORT"],
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '91CHRoWmyxTeQgoJ0cPV',
+        'HOST': 'containers-us-west-170.railway.app',
+        'PORT': '6556',
     }
 }
+
 
 
 # DATABASES = {
@@ -262,10 +262,15 @@ EMAIL_HOST_PASSWORD = 'lfgrfajvvmxuuigb'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-
 # Update database configuration from $DATABASE_URL.
+
 import dj_database_url
 
+DATABASE_URL = 'postgresql://postgres:91CHRoWmyxTeQgoJ0cPV@containers-us-west-170.railway.app:6556/railway'
+
+DATABASES = {
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+}
 
 
 
@@ -273,6 +278,3 @@ import dj_database_url
 # https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-
-WSGI_APPLICATION = 'mysite.wsgi.app'
