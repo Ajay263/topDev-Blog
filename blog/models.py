@@ -22,7 +22,7 @@ class Post(models.Model):
                 on_delete=models.CASCADE,
                 related_name='blog_posts')
     body=RichTextUploadingField() 
-    image = models.ImageField(upload_to='images/%Y/%m/%d/')
+    image = models.ImageField(upload_to='media/Post_images/%Y/%m/%d/')
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -101,8 +101,8 @@ class Contact(models.Model):
 class About(models.Model):
     mission = models.TextField(max_length=1000)
     aboutme = models.TextField(max_length=1000)
-    mission_pic = models.ImageField(upload_to='images/%Y/%m/%d/')
-    aboutme_pic = models.ImageField(upload_to='images/%Y/%m/%d/')
+    mission_pic = models.ImageField(upload_to='media/Mission_images/%Y/%m/%d/')
+    aboutme_pic = models.ImageField(upload_to='media/Aboutme_images/%Y/%m/%d/')
     
     class Meta:
         verbose_name_plural = "About"
@@ -112,7 +112,7 @@ class About(models.Model):
 class OurTeam(models.Model):
     name = models.CharField(max_length=50)
     position = models.CharField(max_length=50)
-    profile = models.ImageField(upload_to='ourteam/%Y/%m/%d/')
+    profile = models.ImageField(upload_to='media/Ourteam_images/%Y/%m/%d/')
     about= models.TextField(max_length=1000)
 
     def __str__(self):
