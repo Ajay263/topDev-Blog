@@ -29,7 +29,7 @@
                     <a href="{{ post.get_absolute_url }}" class="img-bg d-flex align-items-end" style="background-image: url({{ post.image.url }});">
                       <div class="img-bg-inner">
                         <h2>{{post.title}}</h2>
-                        <p>{{ post.body|markdown|truncatewords_html:30  }}</p>
+                         <p>{{ post.body_summary|truncatewords_html:30}}</p>
                       </div>
                     </a>
                   </div>
