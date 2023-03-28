@@ -22,6 +22,7 @@ class Post(models.Model):
                 on_delete=models.CASCADE,
                 related_name='blog_posts')
     body=RichTextUploadingField() 
+    body_summary=models.TextField(max_length=500)
     image = models.ImageField(upload_to='media/Post_images/%Y/%m/%d/')
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
